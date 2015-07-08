@@ -2,6 +2,7 @@
 
 let React = require('react-native');
 let { StyleSheet, PixelRatio, Image } = React;
+var Dimensions = require('Dimensions');
 
 class Pizza extends React.Component {
   render() {
@@ -11,10 +12,12 @@ class Pizza extends React.Component {
   }
 }
 
+let screenHeight = Dimensions.get('window').height;
+
 let styles = StyleSheet.create({
   image: {
-    width: 200,
-    height: 200
+    width: screenHeight * 0.35,
+    height: screenHeight * 0.35
   }
 })
 

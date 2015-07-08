@@ -2,6 +2,7 @@
 
 let React = require('react-native');
 let { StyleSheet, View, Text } = React;
+var Dimensions = require('Dimensions');
 
 class CuttingInstruction extends React.Component {
   render() {
@@ -21,10 +22,40 @@ class CuttingInstruction extends React.Component {
   }
 }
 
+let isLegacy = () => {
+  let window = Dimensions.get('window');
+  return (window.height * window.scale) < 1100;
+}
+
+let isIphone5 = () => {
+  let window = Dimensions.get('window');
+  return (window.height * window.scale) < 1300;
+}
+
+let fontSize = () => {
+  if (isLegacy()) {
+    return 15;
+  } else if (isIphone5()) {
+    return 17;
+  } else {
+    return 20;
+  }
+}
+
+let marginTop = () => {
+  if (isLegacy()) {
+    return 24;
+  } else if (isIphone5()) {
+    return 32;
+  } else {
+    return 42;
+  }
+}
+
 let styles = StyleSheet.create({
   text: {
-    fontSize: 18,
-    marginTop: 35,
+    fontSize: fontSize(),
+    marginTop: marginTop(),
     textAlign: 'center',
     color: 'white'
   },
