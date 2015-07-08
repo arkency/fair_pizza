@@ -1,7 +1,7 @@
 'use strict';
 
 let React = require('react-native');
-let { PickerIOS, StyleSheet, View } = React;
+let { PickerIOS, StyleSheet } = React;
 let PickerIOSItem = PickerIOS.Item;
 
 class PeopleCountPicker extends React.Component {
@@ -12,20 +12,18 @@ class PeopleCountPicker extends React.Component {
   }
 
   onValueChange(value) {
-    value = value.toString();
-    this.setState({ selectedValue: value });
+    this.props.setPeopleCount(value);
   }
 
   render() {
     let pickerItems = [];
-    for (var i = 2; i <= 6; i++) {
+    for (var i = 2; i <= 5; i++) {
       pickerItems.push(<PickerIOSItem key={i} value={i} label={i.toString()} />);
     }
 
     return (
       <PickerIOS
-        selectedValue={this.state.selectedValue}
-        key={this.state.selectedValue}
+        selectedValue={this.props.peopleCount}
         onValueChange={this.onValueChange}
         style={styles.picker}
       >
@@ -37,6 +35,8 @@ class PeopleCountPicker extends React.Component {
 
 var styles = StyleSheet.create({
   picker: {
+    top: 60,
+    backgroundColor: '#fff'
   }
 });
 
