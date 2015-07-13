@@ -1,7 +1,7 @@
 'use strict'
 
 let React = require('react-native');
-let { StyleSheet, PixelRatio, Image } = React;
+let { StyleSheet, Image } = React;
 var Dimensions = require('Dimensions');
 
 class Pizza extends React.Component {
